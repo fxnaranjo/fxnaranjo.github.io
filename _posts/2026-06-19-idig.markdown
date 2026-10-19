@@ -1,29 +1,83 @@
 ---
 layout: post
-title:  "IBM Datapower Interact Gateway and the Enterprise"
+title:  "AI Gateway and the Enterprise"
 date:   2026-06-19 15:50:28 -0500
 categories: blog post
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+As enterprises move from experimenting with AI to deploying AI agents in day-to-day operations, a familiar challenge reappears: how do we let these agents interact with systems, data, and applications in a secure and controlled way?
 
-Jekyll requires blog post files to be named according to the following format:
+We have seen this pattern before. When the internet became widely adopted, firewalls became essential. When organizations began exposing services, API gateways became the standard way to manage and secure access. Today a similar shift is underway. As AI agents proliferate, the AI gateway is emerging as the control point that governs how they interact with the rest of the organization.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+# Treat AI Agents Like Any Other Enterprise Identity
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Imagine a new employee joining your organization. You would not grant unrestricted access to every application, database, and business process on day one. You would define what they may access, what actions they may perform, and what information they are permitted to see.
+The same principle applies to AI agents.
 
-Jekyll also offers powerful support for code snippets:
+An AI agent is more than a chatbot. It can invoke tools, interact with enterprise applications, retrieve information, and complete tasks with limited human intervention. Depending on its design, it may also collaborate with other agents or call external AI models. These capabilities create real business value and real security and governance questions.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+Which systems should an agent be allowed to reach? What information may it retrieve? Which actions can it perform? Can it share sensitive data with another agent or an external model?
+
+Enterprises need clear answers before agents operate at scale. An AI gateway helps supply those answers by sitting in the path of the three primary interaction patterns agents use.
+
+1. ## Agent Tools: Connecting AI to Enterprise Applications:
+   Agents become useful when they can do more than generate text. Through tools they call APIs, search internal knowledge bases, retrieve customer records, update systems of record, and execute business tasks.
+    
+   Consider a customer-support agent. It may need to check order status or create a support ticket. It should not automatically be able to issue refunds, change shipping addresses, or query unrelated customer records. Least-privilege access is as important for agents as it is for human users.
+
+   An AI gateway can enforce these boundaries. It mediates tool calls, applies fine-grained authorization policies based on the agent’s identity and the specific operation requested, and logs every interaction for later review. In practice this often means the gateway sits in front of existing APIs (or works alongside an existing API gateway), translating agent requests into authorized, audited calls while blocking or redacting anything outside the allowed scope.
+
+2. ## Agent-to-Agent Communication: When AI Agents Work Together:
+   Modern AI systems increasingly involve multiple specialized agents collaborating on a single task. One agent may gather information, another analyzes it, and a third drafts a recommendation or report. Protocols such as Agent-to-Agent (A2A) enable this collaboration even across different frameworks and vendors.
+
+   Collaboration, however, requires controlled information sharing. A research agent that has access to confidential customer records should be able to send a sanitized summary to an analysis agent without exposing the underlying data. Not every agent should be able to talk to every other agent.
+
+   An AI gateway can govern these exchanges by authenticating each agent, enforcing communication policies (which agents may interact, what data classes may be shared), and maintaining an audit trail of the messages that cross agent boundaries. The result is collaboration without uncontrolled data sprawl.
+
+3. ## External AI Models: Controlling What Leaves the Enterprise
+   Many agents rely on large language models, whether hosted internally or provided by external services such as OpenAI, Anthropic, or Google to reason and decide next actions. External models deliver powerful capabilities, but they also raise questions of data protection, approved-service usage, and cost control.
+
+   What data is leaving the enterprise? Are only sanctioned models being used? How is consumption measured and limited?
+
+   An AI gateway provides a controlled egress path. It can route requests only to approved model endpoints, apply data classification and redaction before any payload is sent, enforce rate and spend limits, and capture detailed usage telemetry. Organizations retain the benefits of external models while retaining visibility and policy enforcement.
+
+# The AI Gateway as a Critical Control Point
+
+These three patterns tool use, agent-to-agent collaboration, and external model calls share a common requirement: enable useful autonomy while preserving the control enterprises already expect from their identity, network, and API layers.
+
+An AI gateway does not replace existing systems. It composes with them. It can leverage the same identity providers and authorization frameworks already used for human users and services. It can sit in front of or alongside API gateways and service meshes, extending the same policy and observability principles to agent traffic. In short, it adds an agent-aware control plane rather than creating a parallel stack.
+Core technical capabilities typically include:
+
+- Identity and authorization for agents: treating each agent as a first-class principal with scoped credentials and fine-grained permissions.
+- Policy-mediated tool and model access: intercepting calls, evaluating policies, and allowing, denying, or transforming requests.
+- Usage metering, routing, and observability: directing traffic to approved endpoints, enforcing limits, and producing the logs and metrics needed for cost management, compliance, and incident response.
+
+Together these capabilities give organizations a consistent place to apply policy and gain visibility across the growing set of AI interactions.
+
+# From AI Experimentation to Enterprise-Scale Adoption
+
+AI agents can connect information across systems, automate repetitive work, and help teams complete complex processes with less manual effort. Realizing that potential at scale requires the same discipline that accompanied earlier technology shifts: new capabilities demand new control points.
+
+Firewalls made the internet usable inside the enterprise. API gateways made service exposure manageable. AI gateways are emerging as the next layer focused specifically on the interactions between agents, enterprise applications, and AI models.
+
+As organizations evaluate or design this layer, useful questions include:
+
+- How will we assign and manage identity for each agent?
+- Where will tool calls, inter-agent messages, and external model requests be mediated and logged?
+- How will existing identity, API, and data-protection controls be extended rather than duplicated?
+- What visibility and cost controls do we need before agents operate in production?
+
+The goal is not merely to connect AI agents to the enterprise. It is to make those connections secure, controlled, and trustworthy from the start.
+
+
+
+Want to dig a little deeper?, check out the [demo][demo-docs] for more info on how to build and deploy an end to end AI Agent demo using IBM Datapower Interact Gateway.
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[demo-docs]: https://github.com/anshparikh06/Computer-Parts-API

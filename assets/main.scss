@@ -1,0 +1,15 @@
+---
+---
+
+@import "minima";
+
+/* Force justified text */
+.post-content p,
+.page-content p,
+article p,
+.entry-content p,
+main p,
+div p {
+  text-align: justify !important;
+  hyphens: auto !important;
+}
