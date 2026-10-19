@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "DataPower Operator Guide"
+date:   2024-12-21 18:13:06 -0500
+categories: blog post
+---
+## Bridging Local Development and OpenShift Deployment
+
+IBM DataPower Gateway has long been a trusted foundation for secure, high-performance integration and API traffic management. As organizations increasingly adopt container platforms, many teams face a common challenge: how to develop and refine configurations locally, then move those same configurations into a managed, production-ready environment with confidence.
+
+This [repository][dp-repo]  was created to address exactly that need.
+
+It walks through a practical, end-to-end path: building a local development environment for DataPower, creating and validating configurations there, and then bringing those configurations into Red Hat OpenShift using the IBM DataPower Operator. The goal is simple—help teams move from experimentation to deployment without losing the work they’ve already done.
+
+Whether you’re exploring DataPower for the first time on containers or looking for a clearer way to promote configurations into OpenShift, this guide offers a focused, hands-on starting point. It emphasizes the journey from local setup to a running service managed by the official operator, so you can concentrate on the business logic and policies that matter rather than wrestling with the transition itself.
+
+If you’re working with DataPower in modern hybrid or cloud-native environments, take a look. The repository is intended as a practical companion for anyone who wants to develop confidently and deploy more smoothly.
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
+{% endhighlight %}
+
+[dp-repo]: https://github.com/fxnaranjo/datapower-operator

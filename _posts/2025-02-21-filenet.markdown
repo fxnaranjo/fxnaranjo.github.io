@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "FileNet on OpenShift: A Practical Guide for Getting Started"
+date:   2025-02-21 16:31:12 -0500
+categories: blog post
+---
+## Bridging Local Development and OpenShift Deployment
+
+IBM FileNet Content Manager remains a cornerstone for organizations that need robust, enterprise-grade content and document management. As more teams move workloads to container platforms, interest has grown in running FileNet on modern, managed environments such as Red Hat OpenShift on IBM Cloud.
+
+This [repository][filenet-repo] was created to make that path clearer and more approachable.
+
+It offers a straightforward, demonstration-focused walkthrough for standing up a simple FileNet Content Manager instance on a managed OpenShift cluster. The emphasis is on helping readers understand the overall process of bringing the necessary supporting pieces together and arriving at a working environment they can explore and learn from.
+Please note that the guidance is intended for educational and demonstration purposes only. Any real-world deployment would require careful attention to security, performance, and operational best practices tailored to the specific environment.
+
+If you’re curious about how FileNet can run in a cloud-native setting, or if you’re looking for a practical starting point to experiment with it on OpenShift, this guide is designed to help you get oriented and begin exploring with confidence.
+
+This [repository][dp-repo]  was created to address exactly that need.
+
+
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
+{% endhighlight %}
+
+[filenet-repo]: https://github.com/fxnaranjo/filenet

@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "Bridging HTTP to IBM MQ with IBM DataPower: A Practical Guide"
+date:   2025-09-18 21:34:28 -0500
+categories: blog post
+---
+A Modern integration landscapes often need to connect HTTP/REST clients to reliable messaging systems like IBM MQ. IBM DataPower Gateway is purpose-built for exactly this kind of protocol bridging securely, at scale, and with rich transformation and policy capabilities.
+
+The [demo][mq-docs] repository provides a clear, step-by-step guide (and supporting assets) for implementing a basic HTTP-to-IBM MQ bridge using a DataPower Multi-Protocol Gateway.
+
+## What the Project Demonstrates
+The solution lets an HTTP client send a request to DataPower. DataPower then:
+
+- Puts the message onto an IBM MQ request queue (DP_IN).
+- Waits for a correlated reply on a response queue (DP_OUT).
+- Returns the reply to the original HTTP caller.
+
+A simple App Connect Enterprise (ACE) flow acts as the simulated backend: it listens on DP_IN, creates a response, sets the correlation ID correctly (critical for request-reply), and puts the response on DP_OUT.
+
+This pattern is useful when you need to expose MQ-based systems to modern HTTP clients, or when you want DataPower’s security, mediation, and observability features in front of MQ.
+
+## Why This Matters
+DataPower’s native MQ support (via the idgmq:// URL scheme and Queue Manager objects) makes protocol bridging straightforward while giving you a single place to apply security policies, transformation, logging, and rate limiting. The repository keeps the configuration minimal and focused, making it an excellent starting point for more complex scenarios (dynamic queues, headers, error handling, units of work, etc.).
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
+{% endhighlight %}
+
+[mq-docs]: https://github.com/fxnaranjo/datapower-mq
