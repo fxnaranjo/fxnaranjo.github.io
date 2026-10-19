@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Document Processing on Cloud Pak for Business Automation"
+date:   2021-10-04 09:34:09 -0500
+categories: blog post
+---
+## Bridging Local Development and OpenShift Deployment
+
+IBM Automation Document Processing helps organizations extract meaning from documents at scale, turning unstructured content into structured, actionable information. As part of IBM Cloud Pak for Business Automation, it brings advanced document understanding capabilities into a modern, container-based environment.
+
+This [repository][cp4ba-repo] was created to make getting started with Automation Document Processing more approachable.
+
+It provides a practical, demonstration-focused guide for standing up an instance of Automation Document Processing on a managed Red Hat OpenShift cluster running on IBM Cloud. The goal is to help readers move from curiosity to a working environment they can explore, learn from, and experiment with.
+
+Please note that the steps are intended for educational and demonstration purposes only. Any production deployment would require additional attention to security, performance, sizing, and operational considerations specific to the target environment.
+
+If you’re interested in seeing how Automation Document Processing can run within Cloud Pak for Business Automation on OpenShift, or if you’re looking for a clear starting point to try it out, this guide is designed to help you get oriented and begin exploring with confidence.
+
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
+{% endhighlight %}
+
+[cp4ba-repo]: https://github.com/fxnaranjo/cp4ba-adp
