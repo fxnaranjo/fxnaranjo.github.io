@@ -16,11 +16,33 @@ This blog post will guide you to implement a Datapower Service to communicate wi
   {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
   {% include code-block.html code=my_commands %}
 
-- Postman API Tester
+- Postman API Tester (Optional)
 - Curl Command Line
 - Web Browser
 
+# Deploy Backend Server
 
+- Go to the repository directory and the server folder
+  {% capture my_commands %}cd datapower-jwt/secure-api{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- Install the requiered modules
+  {% capture my_commands %}npm install{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- Start the server
+  {% capture my_commands %}noide server.js &{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- Test the server is up and running
+  {% capture my_commands %}curl -k \{% endcapture %}
+  {% capture my_commands %}--cert mtls-outbound/client-cert.pem \{% endcapture %}
+  {% capture my_commands %}--key mtls-outbound/client-key.pem \{% endcapture %}
+  {% capture my_commands %}https:/localhost:3000/api/health{% endcapture %}
+   {% include code-block.html code=my_commands %}
+
+
+# Configure Datapower
 
 Want to dig a little deeper?, check out the [demo][demo-docs] for more info about the implementation
 
