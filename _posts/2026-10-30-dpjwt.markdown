@@ -11,7 +11,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 # Prerequisites
 
 - Clone the GitHub Repo:
-  {% capture my_commands %}git clone https://github.com {% endcapture %}
+  {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Postman API Tester
