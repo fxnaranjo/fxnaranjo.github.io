@@ -23,9 +23,11 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 ## Accesing the POT Server
 
 
+
+
 ## Deploy Backend Server
 
- - Switch to the root user
+- Switch to the root user
   {% capture my_commands %}sudo su -{% endcapture %}
   {% include code-block.html code=my_commands %}
 
@@ -44,6 +46,10 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 - Test the server is up and running
   {% capture my_commands %}curl -k --cert mtls-outbound/client-cert.pem --key mtls-outbound/client-key.pem https:/localhost:3000/api/health{% endcapture %}
   {% include code-block.html code=my_commands %}
+
+
+
+
 
 
 # Configure Datapower
