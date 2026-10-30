@@ -9,20 +9,41 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 - JWT (JSON Web Token) ---> With JWS (JSON Web Signature) and JWE(JSON Web Encryption)
 - MTLS validation
 
+The architecture will implement a IBM Datapower Multi-protocol gateway service to generate a signed and encrypted JWT to be used to make the call to the backend application. Also Datapower will send the corresponding certificates to the backend due to the MTLS requirement.
+
+The following diagram represents a high level architecture of this POT
+
+![Image](/assets/jwt/18.png){:width="1500px" height="500px"}
+
 ## Prerequisites
 
 - Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM
-
-- Clone the GitHub Repo:
-  {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
-  {% include code-block.html code=my_commands %}
-
-- Postman API Tester (Optional)
 - Curl Command Line
 - Web Browser
+- GIT command line in local computer
+- Postman API Tester (Optional)
 
 ## Accesing the POT Server
 
+- From your environment details page take note of the following endpoint
+
+![Image](/assets/jwt/1.png){:width="1500px" height="500px"}
+
+- Download the ssh key
+
+![Image](/assets/jwt/2.png){:width="1500px" height="500px"}
+
+- Change the permissions for the ssh key
+  {% capture my_commands %}chmod 400 SSH_KEY_FILE>{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- Login into the server, the IP_ADDRESS and PORT where obtained on the first step
+  {% capture my_commands %}ssh -i SH_KEY_FILE itzuser@IP_ADDRESS -p PORT{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- As an example this is what the command will look like
+  {% capture my_commands %}ssh -i vm_ssh_key.vm itzuser@158.175.71.201 -p 31840{% endcapture %}
+  {% include code-block.html code=my_commands %}
 
 
 
@@ -30,6 +51,10 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 
 - Switch to the root user
   {% capture my_commands %}sudo su -{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- Clone the GitHub Repo:
+  {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Go to the repository directory and the server folder
@@ -48,12 +73,121 @@ This blog post will guide you to implement a Datapower Service to communicate wi
   {% capture my_commands %}curl -k --cert mtls-outbound/client-cert.pem --key mtls-outbound/client-key.pem https:/localhost:3000/api/health{% endcapture %}
   {% include code-block.html code=my_commands %}
 
+- You should get the following response
+
+  ![Image](/assets/jwt/3.png){:width="1500px" height="120px"}
 
 
 
 
 
-# Configure Datapower
+
+## Configure Datapower
+
+### A. Get local computer assets
+
+- Clone the GitHub Repo:
+  {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+### B. Create the Datapower Application Domain
+
+- From your environment details page take note of the following endpoint
+
+![Image](/assets/jwt/4.png){:width="1500px" height="500px"}
+
+- From a local browser access the following URL, the IP_ADDRESS and PORT where obtained on the previous step<br>
+  https://IP_ADDRESS:PORT
+
+  For example:
+  https://158.175.71.201:30092
+
+- Login into the IBM Datapower management console using admin/admin
+
+![Image](/assets/jwt/5.png){:width="1000px" height="500px"}
+
+- Use the left menu to search for "application domain" and click it
+
+![Image](/assets/jwt/6.png){:width="1000px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/7.png){:width="1500" height="500px"}
+
+- Create the Application domain using the following values and click "Apply"
+  - Name (Required): jwt
+  - Leave all other values by default
+
+
+![Image](/assets/jwt/8.png){:width="1500" height="500px"}
+
+- You should get a "Successfully created Application domain jwt" message
+
+![Image](/assets/jwt/9.png){:width="1000px" height="500px"}
+
+- Save the changes inot your Datapower environment. It is a good paractice to save avery time you change/add something to avoid losing work.
+
+![Image](/assets/jwt/10.png){:width="1000px" height="500px"}
+
+### C. Create and Configure the Datapower Service
+
+- Switch to the newly created application domain
+
+![Image](/assets/jwt/16.png){:width="500px" height="400px"}
+
+- Use the left menu to search for "crypto tools" and click it
+
+![Image](/assets/jwt/11.png){:width="800px" height="500px"}
+
+- Create New self-signed certificates to be used in your service, using the following values:
+  - Country name (C): US
+  - State or province (ST): TX
+  - Locality (L): WL
+  - Organization (O): FXN
+  - Organizational unit (OU): FXN
+  - Common name (CN) (Required): datapower
+  - Key type: RSA
+  - RSA key length (Required): 2048 bits
+  - Hash algorithm (Required): SHA-256
+  - Validity period: 365
+  - Password alias: (none)
+  - Export private key: ON
+  - Generate self-signed certificate ON
+  - Export self-signed certificate ON
+  - Generate objects ON
+  - Leave all other values by default
+
+![Image](/assets/jwt/12.png){:width="500px" height="400px"}
+![Image](/assets/jwt/13.png){:width="500px" height="400px"}
+
+- Click "Submit" to create the certificates
+
+![Image](/assets/jwt/14.png){:width="500px" height="400px"}
+
+- Click "Confirm" to proceed
+
+![Image](/assets/jwt/15.png){:width="800px" height="200px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/17.png){:width="800px" height="200px"}
+
+- Save your progress
+
+
+
+
+
+
+
+
+
+
+## Test the service
+
+### A. Using curl command
+
+### B. Using Postman collection
 
 Want to dig a little deeper?, check out the [demo][demo-docs] for more info about the implementation
 
