@@ -23,6 +23,8 @@ The following diagram represents a high level architecture of this POT
 - GIT command line in local computer
 - Postman API Tester (Optional)
 
+<details markdown="1">
+  <summary markdown="span">Accesing the POT Server</summary>
 ## Accesing the POT Server
 
 - From your environment details page take note of the following endpoint
@@ -45,7 +47,17 @@ The following diagram represents a high level architecture of this POT
   {% capture my_commands %}ssh -i vm_ssh_key.vm itzuser@158.175.71.201 -p 31840{% endcapture %}
   {% include code-block.html code=my_commands %}
 
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
 
+
+<details markdown="1">
+  <summary markdown="span">Deploy Backend Server</summary>
 
 ## Deploy Backend Server
 
@@ -77,20 +89,40 @@ The following diagram represents a high level architecture of this POT
 
   ![Image](/assets/jwt/3.png){:width="1500px" height="120px"}
 
-
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
 
 
 
 
 ## Configure Datapower
 
-### A. Get local computer assets
+<details markdown="1">
+  <summary markdown="span">A. Get local computer assets</summary>
+
+<h3 style="color: #ff5733;">A. Get local computer assets</h3>
 
 - Clone the GitHub Repo:
   {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
   {% include code-block.html code=my_commands %}
 
-### B. Create the Datapower Application Domain
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
+
+<details markdown="1">
+  <summary markdown="span">B. Create the Datapower Application Domain</summary>
+
+<h3 style="color: #ff5733;">B. Create the Datapower Application Domain</h3>
 
 - From your environment details page take note of the following endpoint
 
@@ -129,7 +161,18 @@ The following diagram represents a high level architecture of this POT
 
 ![Image](/assets/jwt/10.png){:width="1000px" height="500px"}
 
-### C. Create and Configure the Datapower Service
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
+
+<details markdown="1">
+  <summary markdown="span">C. Create and Configure the Datapower Certificates and TLS Server Profile - HTTPS</summary>
+
+<h3 style="color: #ff5733;">C. Create and Configure the Datapower Certificates and TLS Server Profile - HTTPS</h3>
 
 - Switch to the newly created application domain
 
@@ -174,21 +217,313 @@ The following diagram represents a high level architecture of this POT
 
 - Save your progress
 
+- Use the left menu to search for "keystore" and click it
+
+![Image](/assets/jwt/21.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): MPGTW-KETSTORE
+  - Key (Required): datapower
+  - Certificate (Required): datapower
+  - Leave all other values by default
+
+![Image](/assets/jwt/22.png){:width="1200px" height="600px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/23.png){:width="600px" height="100px"}
+
+- Use the left menu to search for "tls server profile" and click it
+
+![Image](/assets/jwt/19.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="600px" height="350px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): MPGTW-TLS-Server-Profile
+  - Keystore (Required): MPGTW-KETSTORE
+  - Leave all other values by default
+
+![Image](/assets/jwt/24.png){:width="600px" height="500px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/25.png){:width="800px" height="80"}
+
+- Use the left menu to search for "https handler" and click it
+
+![Image](/assets/jwt/26.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): HTTPS-8081
+  - Local IP address (Required): 0.0.0.0
+  - Port (Required): 8081
+  - TLS server type: Server profile
+  - TLS server profile (Required): MPGTW-TLS-Server-Profile
+  - Leave all other values by default
+
+![Image](/assets/jwt/27.png){:width="800px" height="600px"}
+
+- You should see the confirmation message, if you see a message saying: "down — Cannot install without a service.". Dont worry its normal for now.
+
+![Image](/assets/jwt/28.png){:width="800px" height="80"}
+
+- Save your progress
+
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
+
+<details markdown="1">
+  <summary markdown="span">D. Create and Configure the Datapower Client Certificates and TLS Client Profile - MTLS</summary>
+
+<h3 style="color: #ff5733;">D. Create and Configure the Datapower Client Certificates and TLS Client Profile - MTLS</h3>
+
+<details markdown="1">
+  <summary markdown="span">MTLS Client - Private Key</summary>
+<!-- ////////////////////////KEY///////////////////////////////// -->
+- Use the left menu to search for "key" and click it
+
+![Image](/assets/jwt/30.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>client-key.pem</b> located in the folder <b>datapower-jwt/secure-api/mtls-outbound</b>
+  - Name (Required): MTLS-CLIENT-KEY
+  - Select a directory (Required): cert:////
+  - Select a file (Required): client-key.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/32.png){:width="800px" height="80"}
+
+</details>
+
+<!-- ////////////////////////KEY///////////////////////////////// -->
+
+<!-- ////////////////////////CERTIFICATE 1///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">MTLS Client - Public Certificate</summary>
+- Use the left menu to search for "certificate" and click it
+
+![Image](/assets/jwt/33.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>client-cert.pem</b> located in the folder <b>datapower-jwt/secure-api/mtls-outbound</b>
+  - Name (Required): MTLS-CLIENT-CERT
+  - Select a directory (Required): cert:////
+  - Select a file (Required): client-cert.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/34.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/35.png){:width="800px" height="80"}
+</details>
+<!-- ////////////////////////CERTIFICATE 1///////////////////////////////// -->
+
+<!-- ////////////////////////CERTIFICATE 2///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">MTLS Server - Public Certificate</summary>
+- Use the left menu to search for "certificate" and click it
+
+![Image](/assets/jwt/33.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>server-cert.pem</b> located in the folder <b>datapower-jwt/secure-api/mtls-outbound</b>
+  - Name (Required): MTLS-SERVER-CERT
+  - Select a directory (Required): cert:////
+  - Select a file (Required): server-cert.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/36.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/37.png){:width="800px" height="80"}
+</details>
+<!-- ////////////////////////CERTIFICATE 2///////////////////////////////// -->
+
+<!-- ////////////////////////MTLS KEY STORE///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">MTLS Key Store</summary>
+- Use the left menu to search for "keystore" and click it
+
+![Image](/assets/jwt/21.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): MTLS-CLIENT-KEYSTORE
+  - Key (Required): MTLS-CLIENT-KEY
+  - Certificate (Required): MTLS-CLIENT-CERT
+  - Leave all other values by default
+
+![Image](/assets/jwt/38.png){:width="600px" height="500px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/39.png){:width="800px" height="80"}
+</details>
+
+<!-- ////////////////////////MTLS KEY STORE///////////////////////////////// -->
+
+<!-- ////////////////////////MTLS TRUST STORE///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">MTLS Trust Store</summary>
+- Use the left menu to search for "truststore" and click it
+
+![Image](/assets/jwt/40.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): MTLS-CLIENT-TRUSTSTORE
+  - Certificates: MTLS-SERVER-CERT (Click the button "ADD" to add the certficate to the trust store)
+  - Leave all other values by default
+
+![Image](/assets/jwt/41.png){:width="1200px" height="800px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/42.png){:width="800px" height="80"}
+</details>
+
+<!-- ////////////////////////MTLS TRUST STORE///////////////////////////////// -->
+
+
+
+<!-- ////////////////////////TLS CLIENT PROFILE///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">TLS Client Profile</summary>
+
+- Use the left menu to search for "tls client profile" and click it
+
+![Image](/assets/jwt/29.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply"
+  - Name (Required): MTLS-CLIENT-PROFILE
+  - Keystore: MTLS-CLIENT-KEYSTORE
+  - Truststore (Required): MTLS-CLIENT-TRUSTSTORE
+  - Leave all other values by default
+
+![Image](/assets/jwt/43.png){:width="1200px" height="800px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/44.png){:width="800px" height="80"}
+
+</details>
+
+<!-- ////////////////////////TLS CLIENT PROFILE///////////////////////////////// -->
+
+
+
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
+
+<details markdown="1">
+  <summary markdown="span">E. Create and Configure the Datapower MultiProtocol Gateway Service</summary>
+
+<h3 style="color: #ff5733;">E. Create and Configure the Datapower MultiProtocol Gateway Service</h3>
 
 
 
 
-
-
-
-
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
 
 ## Test the service
+<details markdown="1">
+  <summary markdown="span">A. Using curl command</summary>
 
-### A. Using curl command
+<h3 style="color: #ff5733;">A. Using curl command</h3>
 
-### B. Using Postman collection
+<details markdown="1">
+  <summary markdown="span">Direct to Server Endpoint</summary>
 
+- From your environment details page take note of the following endpoint
+
+![Image](/assets/jwt/t1.png){:width="600px" height="200px"}
+
+- Test the server endoint directlly -- without using Datapwower, the IP_ADDRESS and PORT where obtained on the previous step
+  {% capture my_commands %}curl -k -X POST --cert mtls-outbound/client-cert.pem --key mtls-outbound/client-key.pem https://IP_ADDRESS:PORT/api/submit --data '  {
+    "client": "Messi",
+    "market": "US",
+    "id": "1714884752"
+  }'{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- As an example this is what the command will look like
+  {% capture my_commands %}curl -k -X POST --cert mtls-outbound/client-cert.pem --key mtls-outbound/client-key.pem https://158.175.71.201:32335/api/submit --data '  {
+    "client": "Messi",
+    "market": "US",
+    "id": "1714884752"
+  }'{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- You should get the following response. Even though we are sending the certiticates for MTLS the server is still requiring a JWT token
+
+  ![Image](/assets/jwt/t2.png){:width="1500px" height="120px"}
+
+</details>
+
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+<hr style="height: 2px; border: none; background-color: #ff5733;">
+</details>
+
+<br>
+<br>
+<br>
+<br>
 Want to dig a little deeper?, check out the [demo][demo-docs] for more info about the implementation
 
 {% highlight pyhton %}
