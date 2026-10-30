@@ -23,7 +23,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 # Deploy Backend Server
 
  - Switch to the root user
-  {% capture my_commands %}[root@vm-1 secure-api]#sudo su -{% endcapture %}
+  {% capture my_commands %}#sudo su -{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Go to the repository directory and the server folder
