@@ -7,6 +7,7 @@ categories: blog post
 This blog post will guide you to implement a Datapower Service to communicate with a backend server that is protected using the following mechanisms:
 
 - JWT (JSON Web Token) ---> With JWS (JSON Web Signature) and JWE(JSON Web Encryption)
+- MTLS validation
 
 ## Prerequisites
 
