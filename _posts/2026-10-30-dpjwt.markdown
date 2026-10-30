@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "IBM Datapower Gateway - JWT (JWS+JWE) backend"
+date:   2026-10-30 01:31:28 -0500
+categories: blog post
+---
+As enterprises move from experimenting with AI to deploying AI agents in day-to-day operations, a familiar challenge reappears: how do we let these agents interact with systems, data, and applications in a secure and controlled way?
+
+We have seen this pattern before. When the internet became widely adopted, firewalls became essential. When organizations began exposing services, API gateways became the standard way to manage and secure access. Today a similar shift is underway. As AI agents proliferate, the AI gateway is emerging as the control point that governs how they interact with the rest of the organization.
+
+# Prerequisites
+
+- Clone the GitHub Repo:
+   {% highlight bash %}
+      git clone https://github.com/fxnaranjo/datapower-jwt.git
+   {% endhighlight %}
+
+- Postman API Tester
+- Curl Command Line
+- Web Browser
+
+
+
+Want to dig a little deeper?, check out the [demo][demo-docs] for more info about the implementation
+
+{% highlight pyhton %}
+def FxnBlog():
+  print("────────────────────────────────")
+  print("  written by Francisco X")
+  print("  powered by thoughts, code & quiet nights")
+  print("────────────────────────────────")
+{% endhighlight %}
+
+[demo-docs]: https://github.com/fxnaranjo/datapower-jwt.git
