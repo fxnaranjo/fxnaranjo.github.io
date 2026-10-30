@@ -8,7 +8,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 
 - JWT (JSON Web Token) ---> With JWS (JSON Web Signature) and JWE(JSON Web Encryption)
 
-# Prerequisites
+## Prerequisites
 
 - Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM
 
@@ -20,7 +20,10 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 - Curl Command Line
 - Web Browser
 
-# Deploy Backend Server
+## Accesing the POT Server
+
+
+## Deploy Backend Server
 
  - Switch to the root user
   {% capture my_commands %}sudo su -{% endcapture %}
