@@ -10,7 +10,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 
 # Prerequisites
 
-- Get the TechZone Environment from this [collection][demo-docs] ----> 8 CPUs and 16GB RAM
+- Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM
 
 - Clone the GitHub Repo:
   {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
