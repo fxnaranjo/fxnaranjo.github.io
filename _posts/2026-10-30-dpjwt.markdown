@@ -23,24 +23,24 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 # Deploy Backend Server
 
  - Switch to the root user
-  {% capture my_commands %}#sudo su -{% endcapture %}
+  {% capture my_commands %}sudo su -{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Go to the repository directory and the server folder
-  {% capture my_commands %}[root@vm-1 secure-api]#cd datapower-jwt/secure-api{% endcapture %}
+  {% capture my_commands %}cd datapower-jwt/secure-api{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Install the requiered modules
-  {% capture my_commands %}[root@vm-1 secure-api]#npm install{% endcapture %}
+  {% capture my_commands %}npm install{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Start the server
-  {% capture my_commands %}[root@vm-1 secure-api]#node server.js &{% endcapture %}
+  {% capture my_commands %}node server.js &{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Test the server is up and running
   {% capture my_commands %}
-  [root@vm-1 secure-api]#curl -k \
+  curl -k \
   --cert mtls-outbound/client-cert.pem \
   --key mtls-outbound/client-key.pem \
   https:/localhost:3000/api/health
