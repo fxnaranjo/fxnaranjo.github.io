@@ -13,7 +13,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 - Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM
 
 - Clone the GitHub Repo:
-  {% capture my_commands %}[root@vm-1 secure-api]# git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
+  {% capture my_commands %}git clone https://github.com/fxnaranjo/datapower-jwt.git {% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Postman API Tester (Optional)
@@ -39,12 +39,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
   {% include code-block.html code=my_commands %}
 
 - Test the server is up and running
-  {% capture my_commands %}
-  curl -k \
-  --cert mtls-outbound/client-cert.pem \
-  --key mtls-outbound/client-key.pem \
-  https:/localhost:3000/api/health
-  {% endcapture %}
+  {% capture my_commands %}curl -k --cert mtls-outbound/client-cert.pem --key mtls-outbound/client-key.pem https:/localhost:3000/api/health{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 
