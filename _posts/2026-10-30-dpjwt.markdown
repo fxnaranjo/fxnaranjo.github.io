@@ -477,7 +477,7 @@ The following diagram represents a high level architecture of this POT
 <hr style="height: 2px; border: none; background-color: #ff5733;">
 </details>
 
-## Test the service
+## Testing the service
 <details markdown="1">
   <summary markdown="span">A. Using curl command</summary>
 
