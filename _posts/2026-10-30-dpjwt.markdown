@@ -492,6 +492,90 @@ The following diagram represents a high level architecture of this POT
 
 <!-- ////////////////////////MATCH RULE///////////////////////////////// -->
 
+<!-- ////////////////////////Signing Key///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">Signing Key</summary>
+
+- Use the left menu to search for "key" and click it
+
+![Image](/assets/jwt/30.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>jws-private.pem</b> located in the folder <b>datapower-jwt/secure-api/keys</b>
+  - Name (Required): jws-sign-key
+  - Select a directory (Required): cert:////
+  - Select a file (Required): jws-private.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/32.png){:width="800px" height="80"}
+
+</details>
+
+<!-- ////////////////////////Signing Key///////////////////////////////// -->
+
+<!-- ////////////////////////Signing Key///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">Signing Key</summary>
+
+- Use the left menu to search for "key" and click it
+
+![Image](/assets/jwt/30.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>jws-private.pem</b> located in the folder <b>datapower-jwt/secure-api/keys</b>
+  - Name (Required): jws-sign-key
+  - Select a directory (Required): cert:////
+  - Select a file (Required): jws-private.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/32.png){:width="800px" height="80"}
+
+</details>
+
+<!-- ////////////////////////Signing Key///////////////////////////////// -->
+
+<!-- ////////////////////////Encryption Certificate///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">Encryption Certificate</summary>
+
+- Use the left menu to search for "certificate" and click it
+
+![Image](/assets/jwt/33.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>jwe-public.pem</b> located in the folder <b>datapower-jwt/secure-api/keys</b>
+  - Name (Required): jwe-encrypt-cert
+  - Select a directory (Required): cert:////
+  - Select a file (Required): jwe-public.pem
+  - Leave all other values by default
+
+![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+
+- You should see the confirmation message
+
+![Image](/assets/jwt/32.png){:width="800px" height="80"}
+
+</details>
+
+<!-- ////////////////////////Encryption Certificate///////////////////////////////// -->
+
 
 <hr style="height: 2px; border: none; background-color: #ff5733;">
 <hr style="height: 2px; border: none; background-color: #ff5733;">
@@ -533,6 +617,35 @@ The following diagram represents a high level architecture of this POT
 - You should get the following response. Even though we are sending the certiticates for MTLS the server is still requiring a JWT token
 
   ![Image](/assets/jwt/t2.png){:width="1500px" height="120px"}
+
+</details>
+
+<details markdown="1">
+  <summary markdown="span">Using IBM Datapower</summary>
+
+- From your environment details page take note of the following endpoint
+
+![Image](/assets/jwt/t3.png){:width="600px" height="200px"}
+
+- Test the server endoint using Datapwower, the IP_ADDRESS and PORT where obtained on the previous step
+  {% capture my_commands %}curl -k -X POST https://IP_ADDRESS:PORT/api/submit --data '  {
+    "client": "Messi",
+    "market": "US",
+    "id": "1714884752"
+  }'{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- As an example this is what the command will look like
+  {% capture my_commands %}curl -k -X POST https://158.175.71.201:32060/api/submit --data '  {
+    "client": "Messi",
+    "market": "US",
+    "id": "1714884752"
+  }'{% endcapture %}
+  {% include code-block.html code=my_commands %}
+
+- You should get the following response. The request was succesfully sent to the backend using JWT token(JWS+JWE) and MTLS
+
+  ![Image](/assets/jwt/t4.png){:width="1500px" height="120px"}
 
 </details>
 
