@@ -17,7 +17,7 @@ The following diagram represents a high level architecture of this POT
 
 ## Prerequisites
 
-- Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM
+- Get the TechZone Environment from this [collection][collection] ----> 8 CPUs and 16GB RAM (Wait Aprx. 10 minutes after the instance is ready)
 - Curl Command Line
 - Web Browser
 - GIT command line in local computer
@@ -77,7 +77,7 @@ The following diagram represents a high level architecture of this POT
   {% include code-block.html code=my_commands %}
 
 - Start the server
-  {% capture my_commands %}node server.js &{% endcapture %}
+  {% capture my_commands %}nohup node server.js > server.log 2>&1 &{% endcapture %}
   {% include code-block.html code=my_commands %}
 
 - Test the server is up and running
