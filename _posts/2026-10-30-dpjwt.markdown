@@ -520,34 +520,6 @@ The following diagram represents a high level architecture of this POT
 
 <!-- ////////////////////////Signing Key///////////////////////////////// -->
 
-<!-- ////////////////////////Signing Key///////////////////////////////// -->
-<details markdown="1">
-  <summary markdown="span">Signing Key</summary>
-
-- Use the left menu to search for "key" and click it
-
-![Image](/assets/jwt/30.png){:width="800px" height="500px"}
-
-- Click "Add"
-
-![Image](/assets/jwt/20.png){:width="800px" height="500px"}
-
-- Complete the following fields according to the image and click "Apply". For this step you have to upload the file named <b>jws-private.pem</b> located in the folder <b>datapower-jwt/secure-api/keys</b>
-  - Name (Required): jws-sign-key
-  - Select a directory (Required): cert:////
-  - Select a file (Required): jws-private.pem
-  - Leave all other values by default
-
-![Image](/assets/jwt/31.png){:width="500px" height="700px"}
-
-- You should see the confirmation message
-
-![Image](/assets/jwt/32.png){:width="800px" height="80"}
-
-</details>
-
-<!-- ////////////////////////Signing Key///////////////////////////////// -->
-
 <!-- ////////////////////////Encryption Certificate///////////////////////////////// -->
 <details markdown="1">
   <summary markdown="span">Encryption Certificate</summary>
