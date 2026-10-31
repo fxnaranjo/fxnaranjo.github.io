@@ -9,7 +9,7 @@ This blog post will guide you to implement a Datapower Service to communicate wi
 - JWT (JSON Web Token) ---> With JWS (JSON Web Signature) and JWE(JSON Web Encryption)
 - MTLS validation
 
-The architecture will implement a IBM Datapower Multi-protocol gateway service to generate a signed and encrypted JWT to be used to make the call to the backend application. Also Datapower will send the corresponding certificates to the backend due to the MTLS requirement.
+The architecture will implement a IBM Datapower Multi-protocol gateway service to generate a signed and encrypted JWT to be used to make the call to the backend application. Additionally, DataPower will present the corresponding certificates to the backend to satisfy the mTLS requirement.
 
 The following diagram represents a high level architecture of this POT
 
