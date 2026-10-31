@@ -495,6 +495,7 @@ The following diagram represents a high level architecture of this POT
 <!-- ////////////////////////Signing Key///////////////////////////////// -->
 <details markdown="1">
   <summary markdown="span">Signing Key</summary>
+  This is the private key that datapower will use to sign the JWT Token, the server will validate this signature using the corresponding public certificate
 
 - Use the left menu to search for "key" and click it
 
@@ -523,6 +524,7 @@ The following diagram represents a high level architecture of this POT
 <!-- ////////////////////////Encryption Certificate///////////////////////////////// -->
 <details markdown="1">
   <summary markdown="span">Encryption Certificate</summary>
+  This is the public certificate that datapower will use to encrypt the JWT Token, the server will decrypt the token using the corresponding private key
 
 - Use the left menu to search for "certificate" and click it
 
