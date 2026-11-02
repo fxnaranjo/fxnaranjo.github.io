@@ -511,11 +511,11 @@ The following diagram represents a high level architecture of this POT
   - Select a file (Required): jws-private.pem
   - Leave all other values by default
 
-![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+![Image](/assets/jwt/48.png){:width="500px" height="700px"}
 
 - You should see the confirmation message
 
-![Image](/assets/jwt/32.png){:width="800px" height="80"}
+![Image](/assets/jwt/49.png){:width="800px" height="80"}
 
 </details>
 
@@ -540,15 +540,101 @@ The following diagram represents a high level architecture of this POT
   - Select a file (Required): jwe-public.pem
   - Leave all other values by default
 
-![Image](/assets/jwt/31.png){:width="500px" height="700px"}
+![Image](/assets/jwt/50.png){:width="500px" height="700px"}
 
 - You should see the confirmation message
 
-![Image](/assets/jwt/32.png){:width="800px" height="80"}
+![Image](/assets/jwt/51.png){:width="800px" height="80"}
 
 </details>
 
 <!-- ////////////////////////Encryption Certificate///////////////////////////////// -->
+
+
+<!-- ////////////////////////MPGW Configuration///////////////////////////////// -->
+<details markdown="1">
+  <summary markdown="span">MPGW Configuration</summary>
+  
+
+- Use the left menu, click the "Home" icon and then click on "Multi-protocol gateway"
+
+![Image](/assets/jwt/52.png){:width="800px" height="500px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- Complete the following fields according to the image and click "Apply".
+  - Name (Required): jwt-mpgw
+  - XML manager (Required): default
+
+![Image](/assets/jwt/53.png){:width="800px" height="400px"}
+
+  - For creating the processing policy, click on the "+" sign
+
+![Image](/assets/jwt/54.png){:width="1200px" height="60px"}
+
+  - In the new tab, complete the following fields according to the image and click "Apply Policy".
+    - Policy Name (Required): jwt-mpgw-policy
+
+![Image](/assets/jwt/55.png){:width="1200px" height="300px"}
+
+- Click "Add"
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+
+- For configuring the policy:
+  - Keep the RuleName unchanged
+  - The rule type must be "Client to Server"
+  - Configure the Match Rule with the "JWT-MATCH-RULE" property
+  - Add a GatewayScript action and upload the file called <b>script.js</b> located in the folder <b>datapower-jwt/datapower-script</b>
+  - Click on "Done" and "Apply Policy" to save the configuration
+
+![Image](/assets/jwt/56.png){:width="1000px" height="350px"}
+
+- Click "Add" again to add a second rule
+
+![Image](/assets/jwt/20.png){:width="800px" height="500px"}
+
+- For configuring the policy:
+  - Keep the RuleName unchanged
+  - The rule type must be "Server to Client"
+  - Configure the Match Rule with the "JWT-MATCH-RULE" property
+  - Click on "Done" and "Apply Policy" to save the configuration
+
+![Image](/assets/jwt/57.png){:width="1000px" height="350px"}
+
+- The final policy will look like the following:
+
+![Image](/assets/jwt/58.png){:width="1000px" height="350px"}
+
+- Back in the MPGW configuration:
+  - Make sure the new created policy is selected
+  - From your environment details page take note of the following endpoint
+
+  ![Image](/assets/jwt/59.png){:width="800px" height="500px"}
+
+  - Fill the Default Backend URL (Required) with the data collected
+
+   ![Image](/assets/jwt/60.png){:width="800px" height="500px"}
+
+  - Select the previously created "Front Side Protocol"  and click "Add"
+
+     ![Image](/assets/jwt/61.png){:width="1200px" height="300px"}
+
+  - Configure the following fields according to the image below:
+
+     ![Image](/assets/jwt/62.png){:width="1200px" height="300px"}
+
+  - Click " "Apply" and Save your progress
+
+</details>
+
+<!-- ////////////////////////MPGW Configuration///////////////////////////////// -->
+
+
+
 
 
 <hr style="height: 2px; border: none; background-color: #ff5733;">
