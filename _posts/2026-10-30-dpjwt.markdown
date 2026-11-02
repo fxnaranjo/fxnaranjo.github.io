@@ -156,7 +156,7 @@ The following diagram represents a high level architecture of this POT
 
 ![Image](/assets/jwt/9.png){:width="1000px" height="500px"}
 
-- Save the changes inot your Datapower environment. It is a good paractice to save avery time you change/add something to avoid losing work.
+- Save the changes into your Datapower environment. It is a good paractice to save every time you change/add something to avoid losing work.
 
 ![Image](/assets/jwt/10.png){:width="1000px" height="500px"}
 
@@ -657,6 +657,7 @@ The following diagram represents a high level architecture of this POT
   <summary markdown="span">Direct to Server Endpoint</summary>
 
 - From your environment details page take note of the following endpoint
+- Change the directory to datapower-jwt/secure-api to be able to locate the certificates
 
 ![Image](/assets/jwt/t1.png){:width="600px" height="200px"}
 
