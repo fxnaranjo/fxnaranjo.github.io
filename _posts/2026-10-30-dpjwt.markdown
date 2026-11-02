@@ -588,7 +588,9 @@ The following diagram represents a high level architecture of this POT
   - Keep the RuleName unchanged
   - The rule type must be "Client to Server"
   - Configure the Match Rule with the "JWT-MATCH-RULE" property
-  - Add a GatewayScript action and upload the file called <b>script.js</b> located in the folder <b>datapower-jwt/datapower-script</b>
+  - Add a GatewayScript action and upload the file called <b>script.js</b> located in the folder <b>datapower-jwt/datapower-script</b>. Feel free to examine the code on <b>script.js</b>, the script does two main tasks: 
+    - Generates the signed and encrypted JWT token
+    - Creates the URL-encoded payload from the JSON payload received by the service
   - Click on "Done" and "Apply Policy" to save the configuration
 
 ![Image](/assets/jwt/56.png){:width="1000px" height="350px"}
